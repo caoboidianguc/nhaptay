@@ -33,8 +33,7 @@ struct ContentView: View {
                     TextField("Them", text: $canMua)
                         .cornerRadius(10)
                         .focused($focusedField, equals: .them)
-                        .onSubmit {addItem()
-                            self.focusedField = .them } //after return hit, cursor still on the field
+                        .onSubmit {addItem()}
                         .task { self.focusedField = .them  } //when screen appears, cursor will focus on the field
                     Button(action: withAnimation {
                         addItem
