@@ -33,12 +33,15 @@ struct ContentView: View {
                     TextField("Them", text: $canMua)
                         .cornerRadius(10)
                         .focused($focusedField, equals: .them)
-                        .onSubmit {addItem()}
+                        .onSubmit {
+                            guard canMua != "" else {return}
+                            addItem()
+                        }
                         .task { self.focusedField = .them  } //when screen appears, cursor will focus on the field
                     Button(action: withAnimation {
                         addItem
                     }) {
-                        Image(systemName: "plus.circle.fill")
+                        Image(systemName: "plus.circle.fill").foregroundStyle(.green)
                     }
                     .disabled(canMua.isEmpty)
                         
